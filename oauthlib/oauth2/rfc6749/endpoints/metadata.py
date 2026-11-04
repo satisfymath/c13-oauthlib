@@ -37,7 +37,9 @@ class MetadataEndpoint(BaseEndpoint):
    .. _`RFC7591`: https://tools.ietf.org/html/rfc7591
    """
 
-    def __init__(self, endpoints, claims={}, raise_errors=True):
+    def __init__(self, endpoints, claims=None, raise_errors=True):
+        if claims is None:
+            claims = {}
         assert isinstance(claims, dict)  # noqa: S101
         for endpoint in endpoints:
             assert isinstance(endpoint, BaseEndpoint)  # noqa: S101
